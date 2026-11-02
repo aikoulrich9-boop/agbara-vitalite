@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #1a0f0a;
+    --card: #2a1911;
+    --gold: #d9a441;
+    --txt: #f3e8d8;
+    --mut: #b9a58c;
+    --border: #5a3b1c;
+  }
+
+  html {
+    background-color: #1a0f0a;
+    color: #f3e8d8;
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: #1a0f0a;
+    color: #f3e8d8;
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+}
+
+/* Subtle Organic Noise Texture */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Authentic AGBARA radial background for product showcases */
+.agbara-radial {
+  background: radial-gradient(ellipse at 50% 38%, rgba(217, 164, 65, 0.35), transparent 65%),
+              repeating-linear-gradient(45deg, rgba(217, 164, 65, 0.05) 0 2px, transparent 2px 20px),
+              linear-gradient(160deg, #3a2012, #120905);
+}
+
+.agbara-kit-radial {
+  background: radial-gradient(ellipse at 30% 50%, rgba(217, 164, 65, 0.42), transparent 60%),
+              repeating-linear-gradient(45deg, rgba(217, 164, 65, 0.07) 0 2px, transparent 2px 20px),
+              linear-gradient(160deg, #4a2a14, #120905);
+}
+
+/* Gold Magnetic Button */
+.btn-gold {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #d9a441;
+  color: #1a0f0a;
+  font-weight: 700;
+  border-radius: 9999px;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+  box-shadow: 0 8px 24px rgba(217, 164, 65, 0.25);
+}
+
+.btn-gold:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(217, 164, 65, 0.4);
+}
+
+.btn-gold:active {
+  transform: scale(0.98);
+}
+
+.btn-gold .btn-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #f5c46b;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+}
+
+.btn-gold:hover .btn-slide {
+  transform: translateY(0%);
+}
+
+.btn-gold .btn-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* WhatsApp Green Button */
+.btn-whatsapp {
+  background: #25D366;
+  color: #06210f;
+  font-weight: 700;
+  border-radius: 9999px;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.25);
+}
+
+.btn-whatsapp:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+}
+
+/* Gold border glow */
+.border-gold-glow {
+  border: 1px solid rgba(217, 164, 65, 0.4);
+  box-shadow: 0 0 20px rgba(217, 164, 65, 0.12);
+}
+
+/* Drop shadow for cut-out bottles */
+.bottle-shadow {
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 50px rgba(217, 164, 65, 0.25));
+}
+
+/* Floating Animations for botanical elements and bottle */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(2deg);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-3deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.08);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 5s ease-in-out infinite;
+}
