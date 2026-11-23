@@ -5,7 +5,6 @@ import SoloShowcase from './components/SoloShowcase';
 import Products from './components/Products';
 import WhyAgbara from './components/WhyAgbara';
 import HowToOrder from './components/HowToOrder';
-import Faq from './components/Faq';
 import Footer from './components/Footer';
 import StickyCart from './components/StickyCart';
 import CartDrawer from './components/CartDrawer';
@@ -72,9 +71,6 @@ export default function App() {
 
         {/* 5. Comment Commander & Formulaire WhatsApp */}
         <HowToOrder cart={cart} />
-
-        {/* 6. Questions Fréquentes */}
-        <Faq />
       </main>
 
       {/* Footer */}
