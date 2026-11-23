@@ -1,13 +1,17 @@
 import React from 'react';
-import { ArrowRight, Sparkles, Check } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 
 export default function SoloShowcase({ onDirectOrder }) {
+  const scrollToBoutique = () => {
+    document.getElementById('produits')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section id="bouteille-solo" className="py-12 sm:py-20 px-4 sm:px-6 max-w-5xl mx-auto">
       <div className="agbara-radial rounded-3xl sm:rounded-[2.5rem] p-6 sm:p-12 border border-[#6b4520] shadow-[0_25px_60px_rgba(0,0,0,0.8)] overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Exact image from the original HTML: alt="La gamme AGBARA : sodabi, bouteille et flacon de poudre" */}
+          {/* Exact image from original HTML */}
           <div className="md:col-span-6 relative">
             <div className="rounded-2xl overflow-hidden border border-agbara-border shadow-2xl bg-black/40">
               <img
@@ -59,12 +63,12 @@ export default function SoloShowcase({ onDirectOrder }) {
             <div>
               <button
                 type="button"
-                onClick={() => onDirectOrder('bouteille')}
+                onClick={scrollToBoutique}
                 className="btn-gold px-8 py-3.5 rounded-full font-serif font-bold text-sm uppercase tracking-wider inline-flex items-center gap-2"
               >
                 <span className="btn-slide" />
                 <span className="btn-content flex items-center gap-2">
-                  <span>Commander la Bouteille (10 000 FCFA)</span>
+                  <span>Choisir dans la Boutique</span>
                   <ArrowRight className="w-4 h-4" />
                 </span>
               </button>

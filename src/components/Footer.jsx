@@ -30,7 +30,7 @@ export default function Footer() {
       {/* Operational System Indicator */}
       <div className="pt-4 flex items-center justify-center gap-2 font-mono text-[11px] text-emerald-400">
         <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-        <span>SERVICE DISPENSATION WHATSAPP EN LIGNE 24/7</span>
+        <span>SERVICE CONSEIL WHATSAPP DISPONIBLE</span>
       </div>
 
       <p className="pt-2 text-[11px] text-agbara-mut/60 font-mono">

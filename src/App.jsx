@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import MedicalScience from './components/MedicalScience';
 import SoloShowcase from './components/SoloShowcase';
-import Timeline from './components/Timeline';
 import Products from './components/Products';
-import ManVitalityStory from './components/ManVitalityStory';
 import WhyAgbara from './components/WhyAgbara';
-import Testimonials from './components/Testimonials';
 import HowToOrder from './components/HowToOrder';
 import Faq from './components/Faq';
 import Footer from './components/Footer';
@@ -19,7 +15,7 @@ import { PRODUCTS } from './data/products';
 export default function App() {
   // Cart state: { [productId]: quantity }
   const [cart, setCart] = useState({
-    kit: 1, // Pre-select Kit AGBARA for optimal conversion
+    kit: 1, // Pre-select Combo AGBARA for easy checkout
   });
 
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -51,45 +47,33 @@ export default function App() {
       {/* Subtle organic noise texture */}
       <div className="noise-overlay" aria-hidden="true" />
 
-      {/* Header & Delivery Ticker */}
+      {/* Header (clean, without top 24h ticker) */}
       <Navbar
         cartCount={totalItems}
         onOpenCart={() => setIsCartOpen(true)}
       />
 
       <main className="pb-16">
-        {/* 1. Hero Section with Interactive Visualizer */}
+        {/* 1. Hero Section (Crisp HD bottle, text on both sides, no price, Commander CTA) */}
         <Hero onDirectOrder={handleDirectOrder} />
 
-        {/* 2. La Bouteille AGBARA Showcase */}
+        {/* 2. La Bouteille AGBARA (Description du produit conservée) */}
         <SoloShowcase onDirectOrder={handleDirectOrder} />
 
-        {/* 3. Medical & Botanical Science */}
-        <MedicalScience />
-
-        {/* 4. Timeline 30 Jours */}
-        <Timeline />
-
-        {/* 5. Catalogue Complet des Produits (Kit, Bouteille, Sodabi, Poudre) */}
+        {/* 3. La Boutique (Juste après la description : options séparées + combo) */}
         <Products
           cart={cart}
           updateQuantity={updateQuantity}
           onDirectOrder={handleDirectOrder}
         />
 
-        {/* 6. L'Histoire & La Dignité Masculine Retrouvée */}
-        <ManVitalityStory />
-
-        {/* 7. Pourquoi AGBARA ? */}
+        {/* 4. Pourquoi AGBARA ? */}
         <WhyAgbara />
 
-        {/* 8. Témoignages Clients Vérifiés */}
-        <Testimonials />
-
-        {/* 9. Comment Commander & Formulaire de Commande Directe */}
+        {/* 5. Comment Commander & Formulaire WhatsApp */}
         <HowToOrder cart={cart} />
 
-        {/* 10. Questions Fréquentes */}
+        {/* 6. Questions Fréquentes */}
         <Faq />
       </main>
 

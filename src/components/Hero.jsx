@@ -1,12 +1,16 @@
 import React from 'react';
-import { ArrowRight, MessageCircle, ShieldCheck, Sparkles, Star, Check, Zap, CheckCircle2, Flame, Droplets, Clock, PackageCheck } from 'lucide-react';
-import { PRODUCTS, WHATSAPP_NUMBER } from '../data/products';
+import { ArrowRight, MessageCircle, Sparkles, Check, Zap, Flame, Droplets, CheckCircle2 } from 'lucide-react';
+import { WHATSAPP_NUMBER } from '../data/products';
 
-export default function Hero({ onDirectOrder }) {
-  const whatsappDirectUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=Bonjour%20AGBARA%2C%20je%20souhaite%20commander%20la%20Bouteille%20AGBARA.`;
+export default function Hero() {
+  const whatsappDirectUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=Bonjour%20AGBARA%2C%20je%20souhaite%20commander%20les%20produits%20AGBARA.`;
+
+  const scrollToBoutique = () => {
+    document.getElementById('produits')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <section className="relative w-full min-h-[92vh] flex items-center bg-agbara-bg text-agbara-txt overflow-hidden pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8">
+    <section className="relative w-full min-h-[90vh] flex items-center bg-agbara-bg text-agbara-txt overflow-hidden pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8">
       
       {/* Ambient Radial Amber Glows */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -29,14 +33,6 @@ export default function Hero({ onDirectOrder }) {
               La force de l’homme.
             </span>
           </h1>
-          <div className="flex items-center justify-center gap-2 text-xs font-mono text-agbara-txt/80">
-            <div className="flex items-center text-agbara-gold">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 fill-current" />
-              ))}
-            </div>
-            <span><strong>4.9/5</strong> • Plus de 340 hommes satisfaits</span>
-          </div>
         </div>
 
         {/* 3-Column Flanking Architecture: Text Left — Bottle Center — Text Right */}
@@ -61,34 +57,22 @@ export default function Hero({ onDirectOrder }) {
               </span>
             </h1>
 
-            {/* Social proof stars (Desktop) */}
-            <div className="hidden lg:flex items-center gap-2.5 mb-5">
-              <div className="flex items-center text-agbara-gold">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-current" />
-                ))}
-              </div>
-              <span className="text-xs font-mono text-agbara-txt/80">
-                <strong className="text-agbara-gold">4.9/5</strong> • 340+ clients satisfaits
-              </span>
-            </div>
-
             {/* Description */}
             <p className="font-serif text-sm sm:text-base text-agbara-txt/85 leading-relaxed mb-6">
               Une macération noble d’exception préparée avec soin à base de plantes, racines denses et d’écorces sauvages du Bénin. 
               Une réponse puissante, naturelle et respectueuse de votre corps pour réveiller une fermeté souveraine.
             </p>
 
-            {/* CTAs */}
+            {/* CTAs (Price removed, button simply says "Commander" and leads to boutique) */}
             <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center gap-3 w-full mb-6">
               <button
                 type="button"
-                onClick={() => onDirectOrder('bouteille')}
-                className="btn-gold px-6 py-3.5 text-xs sm:text-sm font-serif font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-2xl"
+                onClick={scrollToBoutique}
+                className="btn-gold px-8 py-3.5 text-sm font-serif font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-2xl"
               >
                 <span className="btn-slide" />
                 <span className="btn-content flex items-center gap-2">
-                  <span>Commander (10 000 F)</span>
+                  <span>Commander</span>
                   <ArrowRight className="w-4 h-4" />
                 </span>
               </button>
@@ -104,7 +88,7 @@ export default function Hero({ onDirectOrder }) {
               </a>
             </div>
 
-            {/* Trust pills */}
+            {/* Trust Points */}
             <div className="space-y-2 pt-2 border-t border-agbara-border/40 w-full text-xs font-mono text-agbara-mut">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-3.5 h-3.5 text-agbara-gold shrink-0" />
@@ -123,12 +107,12 @@ export default function Hero({ onDirectOrder }) {
           </div>
 
           {/* ======================================================== */}
-          {/* 2. CENTER COLUMN: The Centered Majestic Bottle Image     */}
+          {/* 2. CENTER COLUMN: The Centered Majestic Bottle (Crisp HD)*/}
           {/* ======================================================== */}
           <div className="lg:col-span-4 relative flex flex-col justify-center items-center order-1 lg:order-2 my-2 lg:my-0">
             
             {/* Ambient Circular Gold Glow behind the bottle */}
-            <div className="absolute w-[260px] sm:w-[320px] lg:w-[360px] h-[260px] sm:h-[320px] lg:h-[360px] rounded-full bg-agbara-gold/25 blur-[80px] pointer-events-none animate-pulse-glow" />
+            <div className="absolute w-[280px] sm:w-[340px] lg:w-[380px] h-[280px] sm:h-[340px] lg:h-[380px] rounded-full bg-agbara-gold/25 blur-[85px] pointer-events-none animate-pulse-glow" />
             
             {/* Floating Botanical Leaf 1 (Top Left) */}
             <div className="absolute top-2 left-4 sm:left-6 z-20 pointer-events-none animate-float">
@@ -149,7 +133,7 @@ export default function Hero({ onDirectOrder }) {
             </div>
 
             {/* Floating Botanical Leaf 3 (Bottom Right) */}
-            <div className="absolute bottom-8 right-2 sm:right-6 z-20 pointer-events-none animate-float">
+            <div className="absolute bottom-6 right-2 sm:right-6 z-20 pointer-events-none animate-float">
               <img
                 src="/images/leaf3.png"
                 alt="Feuille botanique AGBARA"
@@ -160,29 +144,23 @@ export default function Hero({ onDirectOrder }) {
             {/* Floating Badge Top-Right */}
             <div className="absolute top-2 right-1 sm:right-3 z-20 bg-agbara-card/95 backdrop-blur-md border border-agbara-gold/60 px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-mono text-agbara-gold shadow-2xl flex items-center gap-1.5">
               <Sparkles className="w-3 h-3 text-agbara-gold" />
-              <span>Bouteille 750ml</span>
+              <span>Bouteille 750ml Hermétique</span>
             </div>
 
-            {/* The Ultra-HD Centered Bottle: Stopper and Base 100% visible */}
+            {/* The Ultra-HD Straight Centered Bottle (Super HD 648x1800 from original master) */}
             <div 
-              className="relative z-10 flex items-center justify-center transition-transform duration-700 hover:scale-[1.03] cursor-pointer"
-              onClick={() => onDirectOrder('bouteille')}
-              title="Cliquer pour commander la bouteille AGBARA"
+              className="relative z-10 flex items-center justify-center transition-transform duration-700 hover:scale-[1.03] cursor-pointer py-2"
+              onClick={scrollToBoutique}
+              title="Cliquer pour découvrir la boutique AGBARA"
             >
               <img
-                src="/images/hero_bottle_clean.png"
-                alt="Bouteille AGBARA : Macération d'épices, d'écorces et de racines"
-                className="h-[360px] sm:h-[420px] md:h-[460px] lg:h-[490px] xl:h-[530px] max-h-[58vh] w-auto max-w-full object-contain bottle-shadow select-none"
+                src="/images/agbara_bottle_super_hd.png"
+                alt="Bouteille AGBARA : Macération noble d'épices, d'écorces et de racines"
+                className="h-[380px] sm:h-[440px] md:h-[480px] lg:h-[510px] xl:h-[550px] max-h-[60vh] w-auto max-w-full object-contain bottle-shadow select-none"
                 style={{
                   imageRendering: '-webkit-optimize-contrast',
                 }}
               />
-            </div>
-
-            {/* Price Pill positioned cleanly BELOW the bottle without covering it */}
-            <div className="relative z-20 mt-2 bg-[#120905]/95 backdrop-blur-md border border-agbara-border/90 px-4 py-1.5 rounded-full text-center shadow-xl">
-              <span className="font-bold text-agbara-gold text-xs sm:text-sm tracking-wide">10 000 FCFA</span>
-              <span className="text-[10px] text-agbara-mut font-mono ml-2">• Macération d’épices</span>
             </div>
 
           </div>
@@ -245,22 +223,15 @@ export default function Hero({ onDirectOrder }) {
                     Rechargeable 3 Fois
                   </h3>
                   <p className="text-xs text-agbara-txt/80 leading-relaxed mt-1">
-                    La bouteille en verre noble se recharge jusqu'à 3 fois avec du Sodabi ou spiritueux de votre choix.
+                    La bouteille en verre noble se recharge jusqu'à 3 fois avec du Soto ou spiritueux de votre choix.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Quick Guarantees Box */}
-            <div className="w-full p-3.5 rounded-xl bg-[#120905]/80 border border-agbara-border/50 flex items-center justify-between text-[11px] font-mono text-agbara-mut">
-              <div className="flex items-center gap-1.5">
-                <PackageCheck className="w-4 h-4 text-agbara-gold" />
-                <span>Colis 100% Anonyme</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4 text-agbara-gold" />
-                <span>Livraison 24h - 48h</span>
-              </div>
+            {/* Quick Guarantee */}
+            <div className="w-full p-3.5 rounded-xl bg-[#120905]/80 border border-agbara-border/50 flex items-center justify-center text-center text-xs font-mono text-agbara-gold">
+              <span>Colis neutre & discret • Suivi personnalisé WhatsApp</span>
             </div>
 
           </div>

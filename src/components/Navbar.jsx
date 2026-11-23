@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingBag, MessageCircle, Menu, X, ShieldCheck } from 'lucide-react';
+import { ShoppingBag, MessageCircle, Menu, X } from 'lucide-react';
 import { WHATSAPP_NUMBER } from '../data/products';
 
 export default function Navbar({ cartCount, onOpenCart }) {
@@ -8,7 +8,7 @@ export default function Navbar({ cartCount, onOpenCart }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 30) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -20,9 +20,8 @@ export default function Navbar({ cartCount, onOpenCart }) {
 
   const navLinks = [
     { name: "La Bouteille", href: "#bouteille-solo" },
-    { name: "Science & Bienfaits", href: "#science" },
-    { name: "Nos Produits", href: "#produits" },
-    { name: "Témoignages", href: "#avis" },
+    { name: "La Boutique", href: "#produits" },
+    { name: "Pourquoi AGBARA", href: "#pourquoi" },
     { name: "Commander", href: "#commander" },
     { name: "FAQ", href: "#faq" },
   ];
@@ -31,18 +30,8 @@ export default function Navbar({ cartCount, onOpenCart }) {
 
   return (
     <>
-      {/* Top Delivery Announcement Ticker */}
-      <div className="bg-[#120905] border-b border-agbara-border/70 py-2 px-4 text-center text-[11px] font-mono tracking-wider text-agbara-mut z-50 relative overflow-hidden">
-        <div className="flex items-center justify-center gap-3">
-          <span className="w-2 h-2 rounded-full bg-agbara-gold animate-pulse shrink-0" />
-          <span>
-            <strong className="text-agbara-gold">LIVRAISON 24H À COTONOU & TOUT LE BÉNIN</strong> • PAIEMENT À LA LIVRAISON (CASH & MOMO) • EXPÉDITION INTERNATIONALE DISCRÈTE
-          </span>
-        </div>
-      </div>
-
-      {/* Floating Pill Header */}
-      <header className="sticky top-3 inset-x-0 z-40 flex justify-center px-4 pointer-events-none">
+      {/* Floating Pill Header (Top 24h announcement ticker removed as requested) */}
+      <header className="fixed top-4 inset-x-0 z-40 flex justify-center px-4 pointer-events-none">
         <nav
           className={`pointer-events-auto transition-all duration-300 rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between gap-4 md:gap-8 max-w-5xl w-full border ${
             scrolled
@@ -70,7 +59,7 @@ export default function Navbar({ cartCount, onOpenCart }) {
           </a>
 
           {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-5">
+          <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -145,7 +134,7 @@ export default function Navbar({ cartCount, onOpenCart }) {
               className="btn-gold w-full text-center py-3 rounded-full font-serif font-bold uppercase text-sm shadow-xl"
             >
               <span className="btn-slide" />
-              <span className="btn-content">Voir les Produits</span>
+              <span className="btn-content">Accéder à la Boutique</span>
             </a>
             <a
               href={whatsappDirectUrl}
