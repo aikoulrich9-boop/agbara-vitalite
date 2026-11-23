@@ -4,21 +4,18 @@ import Hero from './components/Hero';
 import SoloShowcase from './components/SoloShowcase';
 import Products from './components/Products';
 import WhyAgbara from './components/WhyAgbara';
-import HowToOrder from './components/HowToOrder';
 import Footer from './components/Footer';
 import StickyCart from './components/StickyCart';
 import CartDrawer from './components/CartDrawer';
-import CheckoutModal from './components/CheckoutModal';
-import { PRODUCTS } from './data/products';
+import { PRODUCTS, WHATSAPP_NUMBER } from './data/products';
 
 export default function App() {
   // Cart state: { [productId]: quantity }
   const [cart, setCart] = useState({
-    kit: 1, // Pre-select Combo AGBARA for easy checkout
+    kit: 1, // Pre-select Combo AGBARA
   });
 
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
   const updateQuantity = (productId, delta) => {
     setCart((prev) => {
@@ -33,10 +30,11 @@ export default function App() {
   };
 
   const handleDirectOrder = (productId) => {
-    if (!cart[productId] || cart[productId] === 0) {
-      setCart((prev) => ({ ...prev, [productId]: 1 }));
-    }
-    setIsCheckoutOpen(true);
+    const product = PRODUCTS.find((p) => p.id === productId);
+    const qty = (cart[productId] && cart[productId] > 0) ? cart[productId] : 1;
+    const msg = `Bonjour AGBARA, je souhaite commander :\n• ${qty} × ${product ? product.name : 'Produit AGBARA'} (${product ? ((product.price * qty).toLocaleString('fr-FR') + ' FCFA') : ''})\n\nMerci de me préciser les modalités de livraison.`;
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
   };
 
   const totalItems = Object.values(cart).reduce((sum, q) => sum + q, 0);
@@ -46,7 +44,7 @@ export default function App() {
       {/* Subtle organic noise texture */}
       <div className="noise-overlay" aria-hidden="true" />
 
-      {/* Header (clean, without top 24h ticker) */}
+      {/* Header */}
       <Navbar
         cartCount={totalItems}
         onOpenCart={() => setIsCartOpen(true)}
@@ -59,7 +57,7 @@ export default function App() {
         {/* 2. La Bouteille AGBARA (Description du produit conservée) */}
         <SoloShowcase onDirectOrder={handleDirectOrder} />
 
-        {/* 3. La Boutique (Juste après la description : options séparées + combo) */}
+        {/* 3. La Boutique (Options séparées + Pack Combo) */}
         <Products
           cart={cart}
           updateQuantity={updateQuantity}
@@ -68,9 +66,6 @@ export default function App() {
 
         {/* 4. Pourquoi AGBARA ? */}
         <WhyAgbara />
-
-        {/* 5. Comment Commander & Formulaire WhatsApp */}
-        <HowToOrder cart={cart} />
       </main>
 
       {/* Footer */}
@@ -88,15 +83,6 @@ export default function App() {
         onClose={() => setIsCartOpen(false)}
         cart={cart}
         updateQuantity={updateQuantity}
-        onOpenCheckout={() => setIsCheckoutOpen(true)}
-      />
-
-      {/* Checkout Modal */}
-      <CheckoutModal
-        isOpen={isCheckoutOpen}
-        onClose={() => setIsCheckoutOpen(false)}
-        cart={cart}
-        onClearCart={clearCart}
       />
     </div>
   );

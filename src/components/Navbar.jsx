@@ -22,7 +22,6 @@ export default function Navbar({ cartCount, onOpenCart }) {
     { name: "La Bouteille", href: "#bouteille-solo" },
     { name: "La Boutique", href: "#produits" },
     { name: "Pourquoi AGBARA", href: "#pourquoi" },
-    { name: "Commander", href: "#commander" },
   ];
 
   const whatsappDirectUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=Bonjour%20AGBARA%2C%20je%20souhaite%20des%20informations%20sur%20vos%20produits%20de%20vitalit%C3%A9.`;

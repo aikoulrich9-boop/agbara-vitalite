@@ -2,7 +2,7 @@ import React from 'react';
 import { X, Trash2, Plus, Minus, ShoppingBag, MessageCircle, ArrowRight } from 'lucide-react';
 import { PRODUCTS, WHATSAPP_NUMBER } from '../data/products';
 
-export default function CartDrawer({ isOpen, onClose, cart, updateQuantity, onOpenCheckout }) {
+export default function CartDrawer({ isOpen, onClose, cart, updateQuantity }) {
   if (!isOpen) return null;
 
   const items = Object.entries(cart)
@@ -159,27 +159,11 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity, onOp
                 href={whatsappOrderUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-whatsapp w-full py-3.5 flex items-center justify-center gap-2 text-sm font-serif font-bold"
+                className="btn-whatsapp w-full py-4 flex items-center justify-center gap-2 text-sm font-serif font-bold shadow-xl"
               >
                 <MessageCircle className="w-5 h-5 text-agbara-bg" />
                 <span>Commander sur WhatsApp</span>
               </a>
-
-              {/* Form trigger */}
-              <button
-                type="button"
-                onClick={() => {
-                  onClose();
-                  onOpenCheckout();
-                }}
-                className="btn-gold w-full py-3 text-xs font-serif font-bold uppercase tracking-wider"
-              >
-                <span className="btn-slide" />
-                <span className="btn-content flex items-center justify-center gap-2">
-                  <span>Remplir mes coordonnées</span>
-                  <ArrowRight className="w-4 h-4" />
-                </span>
-              </button>
             </div>
           )}
         </div>
