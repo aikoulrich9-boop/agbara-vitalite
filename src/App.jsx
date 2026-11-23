@@ -5,7 +5,6 @@ import SoloShowcase from './components/SoloShowcase';
 import Products from './components/Products';
 import WhyAgbara from './components/WhyAgbara';
 import Footer from './components/Footer';
-import StickyCart from './components/StickyCart';
 import CartDrawer from './components/CartDrawer';
 import { PRODUCTS, WHATSAPP_NUMBER } from './data/products';
 
@@ -50,7 +49,7 @@ export default function App() {
         onOpenCart={() => setIsCartOpen(true)}
       />
 
-      <main className="pb-16">
+      <main>
         {/* 1. Hero Section (Crisp HD bottle, text on both sides, no price, Commander CTA) */}
         <Hero onDirectOrder={handleDirectOrder} />
 
@@ -70,12 +69,6 @@ export default function App() {
 
       {/* Footer */}
       <Footer />
-
-      {/* Sticky Bottom Cart Bar */}
-      <StickyCart
-        cart={cart}
-        onOpenCart={() => setIsCartOpen(true)}
-      />
 
       {/* Cart Slide-Over Drawer */}
       <CartDrawer
