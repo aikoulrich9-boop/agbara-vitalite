@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Trash2, Plus, Minus, ShoppingBag, MessageCircle, ArrowRight } from 'lucide-react';
+import { X, Trash2, Plus, Minus, ShoppingBag, MessageCircle, ArrowRight, Sparkles } from 'lucide-react';
 import { PRODUCTS, WHATSAPP_NUMBER } from '../data/products';
 
 export default function CartDrawer({ isOpen, onClose, cart, updateQuantity }) {
@@ -28,24 +28,34 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity }) {
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">
-      {/* Backdrop */}
+      {/* Dark frosted backdrop with blur */}
       <div
-        className="absolute inset-0 bg-black/75 backdrop-blur-sm transition-opacity"
+        className="absolute inset-0 bg-black/70 backdrop-blur-md transition-opacity duration-500"
         onClick={onClose}
       />
 
-      <div className="fixed inset-y-0 right-0 max-w-full flex pl-8">
-        <div className="w-screen max-w-md bg-agbara-bg text-agbara-txt shadow-2xl flex flex-col justify-between border-l border-agbara-border">
+      <div className="fixed inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10">
+        {/* Glassmorphic Panel Container */}
+        <div className="w-screen max-w-md relative flex flex-col justify-between text-agbara-txt overflow-hidden bg-[#140a05]/85 backdrop-blur-2xl border-l border-white/15 shadow-[-20px_0_60px_rgba(0,0,0,0.9)]">
           
-          {/* Header */}
-          <div className="p-6 border-b border-agbara-border flex items-center justify-between bg-agbara-card">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-full bg-agbara-gold/20 border border-agbara-gold flex items-center justify-center text-agbara-gold">
+          {/* Ambient Lighting Orbs for Glass Refraction */}
+          <div className="absolute top-0 right-0 w-80 h-80 bg-agbara-gold/15 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute bottom-20 left-0 w-72 h-72 bg-amber-700/10 rounded-full blur-[110px] pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-emerald-500/5 rounded-full blur-[90px] pointer-events-none" />
+
+          {/* ======================================================== */}
+          {/* Glassmorphism Header                                     */}
+          {/* ======================================================== */}
+          <div className="relative z-10 px-6 py-5 border-b border-white/10 bg-white/[0.03] backdrop-blur-xl flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-agbara-gold/25 via-agbara-gold/10 to-transparent border border-agbara-gold/40 flex items-center justify-center text-agbara-gold shadow-[0_4px_16px_rgba(217,164,65,0.25)]">
                 <ShoppingBag className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-serif font-bold text-lg text-agbara-gold">Votre Panier AGBARA</h3>
-                <span className="text-xs font-mono text-agbara-mut">
+                <h3 className="font-serif font-bold text-lg text-white tracking-wide">
+                  Votre Panier AGBARA
+                </h3>
+                <span className="text-[11px] font-mono uppercase tracking-widest text-agbara-gold/90">
                   {items.length} {items.length > 1 ? 'articles choisis' : 'article choisi'}
                 </span>
               </div>
@@ -53,81 +63,106 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity }) {
 
             <button
               onClick={onClose}
-              className="p-2 rounded-full hover:bg-agbara-bg text-agbara-gold transition-colors"
+              className="p-2 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-agbara-gold hover:text-white transition-all shadow-sm"
               aria-label="Fermer"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
           </div>
 
-          {/* Cart Items List */}
-          <div className="flex-1 overflow-y-auto p-6 divide-y divide-agbara-border/60">
+          {/* ======================================================== */}
+          {/* Cart Content / Glassmorphism Empty State                 */}
+          {/* ======================================================== */}
+          <div className="relative z-10 flex-1 overflow-y-auto p-6 space-y-4">
             {items.length === 0 ? (
-              <div className="h-full flex flex-col items-center justify-center text-center p-8">
-                <div className="w-16 h-16 rounded-full bg-agbara-card border border-agbara-border flex items-center justify-center text-agbara-gold/50 mb-4">
-                  <ShoppingBag className="w-8 h-8" />
+              <div className="h-full flex flex-col items-center justify-center text-center px-4 py-12">
+                
+                {/* Glowing Glass Orb Icon */}
+                <div className="relative mb-6">
+                  <div className="absolute inset-0 bg-agbara-gold/25 rounded-3xl blur-2xl animate-pulse-glow" />
+                  <div className="relative w-24 h-24 rounded-3xl bg-gradient-to-br from-white/15 via-white/[0.05] to-transparent border border-white/20 backdrop-blur-2xl flex items-center justify-center text-agbara-gold shadow-[0_12px_35px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.4)]">
+                    <ShoppingBag className="w-10 h-10 filter drop-shadow-[0_4px_10px_rgba(217,164,65,0.4)]" />
+                  </div>
                 </div>
-                <h4 className="font-serif font-bold text-lg text-agbara-gold mb-1">Votre panier est vide</h4>
-                <p className="font-serif text-sm text-agbara-mut max-w-xs mb-6">
-                  Choisissez parmi nos macérations, la grande bouteille ou le flacon de poudre.
+
+                <h4 className="font-serif font-bold text-2xl text-white mb-2 tracking-wide drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]">
+                  Votre panier est vide
+                </h4>
+                
+                <p className="font-serif text-sm text-agbara-txt/70 max-w-xs leading-relaxed mb-8">
+                  Choisissez parmi nos macérations nobles, la grande bouteille ou le flacon de poudre active.
                 </p>
+
                 <button
                   type="button"
                   onClick={onClose}
-                  className="btn-gold px-6 py-2.5 text-xs font-serif font-bold uppercase tracking-wider"
+                  className="btn-gold px-8 py-3.5 text-xs font-serif font-bold uppercase tracking-widest shadow-[0_10px_30px_rgba(217,164,65,0.35)]"
                 >
                   <span className="btn-slide" />
-                  <span className="btn-content">Voir les Produits</span>
+                  <span className="btn-content flex items-center gap-2">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Découvrir la Boutique</span>
+                  </span>
                 </button>
               </div>
             ) : (
               items.map((item) => (
-                <div key={item.id} className="py-4 flex gap-4 items-center">
-                  <div className="w-16 h-16 rounded-xl bg-agbara-card border border-agbara-border p-1 shrink-0 flex items-center justify-center">
+                <div 
+                  key={item.id} 
+                  className="p-4 rounded-2xl bg-white/[0.04] hover:bg-white/[0.07] border border-white/10 backdrop-blur-xl transition-all duration-300 shadow-[0_10px_25px_rgba(0,0,0,0.4)] flex gap-4 items-center group"
+                >
+                  {/* Glassmorphic Image Thumbnail */}
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-white/10 via-black/40 to-black/60 border border-white/15 p-1 shrink-0 flex items-center justify-center overflow-hidden shadow-inner">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-contain filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]"
                     />
                   </div>
+
+                  {/* Product Details */}
                   <div className="flex-1 min-w-0">
-                    <h4 className="font-serif font-bold text-sm text-agbara-gold truncate">
+                    <h4 className="font-serif font-bold text-sm text-white group-hover:text-agbara-gold transition-colors truncate">
                       {item.name}
                     </h4>
-                    <span className="text-xs font-mono text-agbara-mut block">
+                    <span className="text-xs font-mono text-agbara-gold/90 block mt-0.5">
                       {item.priceFormatted}
                     </span>
 
-                    {/* Quantity controls */}
-                    <div className="flex items-center gap-2 mt-2">
+                    {/* Quantity Pill Controls */}
+                    <div className="flex items-center gap-2 mt-2 bg-black/40 border border-white/10 rounded-full px-2 py-0.5 w-max">
                       <button
                         type="button"
                         onClick={() => updateQuantity(item.id, -1)}
-                        className="w-6 h-6 rounded-full border border-agbara-gold text-agbara-gold flex items-center justify-center text-xs hover:bg-agbara-gold hover:text-agbara-bg"
+                        className="w-5 h-5 rounded-full text-agbara-gold hover:text-white flex items-center justify-center text-xs transition-colors"
+                        aria-label="Diminuer"
                       >
                         <Minus className="w-3 h-3" />
                       </button>
-                      <span className="w-6 text-center font-mono text-xs font-bold text-agbara-txt">
+                      <span className="w-5 text-center font-mono text-xs font-bold text-white">
                         {item.qty}
                       </span>
                       <button
                         type="button"
                         onClick={() => updateQuantity(item.id, 1)}
-                        className="w-6 h-6 rounded-full border border-agbara-gold text-agbara-gold flex items-center justify-center text-xs hover:bg-agbara-gold hover:text-agbara-bg"
+                        className="w-5 h-5 rounded-full text-agbara-gold hover:text-white flex items-center justify-center text-xs transition-colors"
+                        aria-label="Augmenter"
                       >
                         <Plus className="w-3 h-3" />
                       </button>
                     </div>
                   </div>
 
-                  <div className="text-right">
-                    <span className="font-mono font-bold text-sm text-agbara-gold block">
+                  {/* Line Total & Remove */}
+                  <div className="text-right flex flex-col items-end justify-between self-stretch">
+                    <span className="font-serif font-bold text-sm text-agbara-gold tracking-tight">
                       {(item.price * item.qty).toLocaleString('fr-FR')} F
                     </span>
                     <button
                       type="button"
                       onClick={() => updateQuantity(item.id, -item.qty)}
-                      className="text-xs text-agbara-mut hover:text-red-400 mt-2 inline-flex items-center gap-1"
+                      className="p-1.5 rounded-lg text-agbara-mut hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                      title="Retirer cet article"
                       aria-label="Supprimer"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
@@ -138,34 +173,38 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity }) {
             )}
           </div>
 
-          {/* Footer Checkout Actions */}
+          {/* ======================================================== */}
+          {/* Glassmorphism Footer Actions                             */}
+          {/* ======================================================== */}
           {items.length > 0 && (
-            <div className="p-6 border-t border-agbara-border bg-agbara-card space-y-4">
+            <div className="relative z-10 p-6 border-t border-white/10 bg-white/[0.03] backdrop-blur-2xl space-y-4">
               <div className="flex items-center justify-between">
-                <span className="font-mono text-sm uppercase text-agbara-mut">
-                  Total Estimé :
+                <span className="font-mono text-xs uppercase tracking-wider text-agbara-mut">
+                  Total Sélection :
                 </span>
-                <span className="font-serif font-bold text-2xl text-agbara-gold">
+                <span className="font-serif font-bold text-2xl text-agbara-gold tracking-tight drop-shadow-[0_2px_12px_rgba(217,164,65,0.35)]">
                   {totalFcfa.toLocaleString('fr-FR')} FCFA
                 </span>
               </div>
 
-              <div className="text-[11px] font-serif text-agbara-mut bg-agbara-bg/80 p-3 rounded-xl border border-agbara-border text-center">
-                Livraison discrète à Cotonou et dans tout le Bénin • Paiement à la livraison
+              <div className="text-[11px] font-mono text-agbara-txt/70 bg-white/[0.03] border border-white/10 p-2.5 rounded-xl text-center backdrop-blur-md">
+                Livraison discrète à Cotonou & Bénin • Paiement à la réception
               </div>
 
-              {/* Direct WhatsApp Action */}
+              {/* Direct WhatsApp Action with Glass Gradient */}
               <a
                 href={whatsappOrderUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-whatsapp w-full py-4 flex items-center justify-center gap-2 text-sm font-serif font-bold shadow-xl"
+                className="btn-whatsapp w-full py-3.5 flex items-center justify-center gap-2.5 text-sm font-serif font-bold tracking-wide uppercase shadow-[0_12px_32px_rgba(16,185,129,0.45)]"
               >
-                <MessageCircle className="w-5 h-5 text-agbara-bg" />
+                <MessageCircle className="w-4 h-4 text-white" />
                 <span>Commander sur WhatsApp</span>
+                <ArrowRight className="w-4 h-4 text-white/80" />
               </a>
             </div>
           )}
+
         </div>
       </div>
     </div>
