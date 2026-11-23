@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PRODUCTS, WHATSAPP_NUMBER } from '../data/products';
-import { Plus, Minus, Check, ShoppingBag, MessageCircle, ArrowRight, Sparkles, Layers, Package } from 'lucide-react';
+import { Plus, Minus, Check, ShoppingBag, MessageCircle, ArrowRight, Sparkles, Layers } from 'lucide-react';
 
 export default function Products({ cart, updateQuantity, onDirectOrder }) {
   const [activeTab, setActiveTab] = useState('all'); // 'all', 'unit', 'combo'
@@ -29,10 +29,6 @@ export default function Products({ cart, updateQuantity, onDirectOrder }) {
       
       {/* Section Header */}
       <div className="text-center mb-10 sm:mb-14">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-agbara-card border border-agbara-gold/50 text-xs font-mono text-agbara-gold uppercase tracking-wider mb-3">
-          <Package className="w-3.5 h-3.5 text-agbara-gold" />
-          <span>Boutique Officielle AGBARA</span>
-        </div>
         <h2 className="font-serif text-3xl sm:text-5xl font-bold text-agbara-gold mb-3">
           La Boutique
         </h2>
@@ -294,32 +290,6 @@ export default function Products({ cart, updateQuantity, onDirectOrder }) {
               </div>
 
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* Total Cart Callout Bar */}
-      {totalCount > 0 && (
-        <div className="p-4 sm:p-6 rounded-2xl bg-[#120905] border border-agbara-gold/60 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl">
-          <div>
-            <div className="text-xs font-mono text-agbara-mut uppercase">
-              Votre sélection en cours ({totalCount} {totalCount > 1 ? 'articles' : 'article'})
-            </div>
-            <div className="font-serif font-bold text-2xl text-agbara-gold">
-              Total : {totalAmount.toLocaleString('fr-FR')} FCFA
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3 w-full sm:w-auto">
-            <a
-              href={getWhatsAppCartUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-whatsapp flex-1 sm:flex-initial px-6 py-3 rounded-full font-mono text-xs flex items-center justify-center gap-2"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span>Valider sur WhatsApp</span>
-            </a>
           </div>
         </div>
       )}

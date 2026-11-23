@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, MessageCircle, Sparkles, Check, Zap, Flame, Droplets, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, MessageCircle, Zap, Flame, Droplets } from 'lucide-react';
 import { WHATSAPP_NUMBER } from '../data/products';
 
 export default function Hero() {
@@ -23,10 +23,6 @@ export default function Hero() {
         
         {/* Mobile / Tablet Header (Title visible on top for small screens) */}
         <div className="lg:hidden text-center mb-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-agbara-card border border-agbara-gold/50 text-[11px] font-mono text-agbara-gold uppercase tracking-wider mb-3 shadow-lg">
-            <Sparkles className="w-3.5 h-3.5 text-agbara-gold" />
-            <span>Savoir Ancestral Africain • 100% Racines</span>
-          </div>
           <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-white leading-[1.1] mb-2">
             Vitalité masculine.<br />
             <span className="text-agbara-gold font-serif italic drop-shadow-[0_4px_16px_rgba(217,164,65,0.4)]">
@@ -43,12 +39,6 @@ export default function Hero() {
           {/* ======================================================== */}
           <div className="lg:col-span-4 flex flex-col items-start text-left order-2 lg:order-1">
             
-            {/* Pharmacopoeia Badge (Desktop) */}
-            <div className="hidden lg:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-agbara-card border border-agbara-gold/50 text-xs font-mono text-agbara-gold uppercase tracking-wider mb-5 shadow-lg">
-              <Sparkles className="w-3.5 h-3.5 text-agbara-gold" />
-              <span>Savoir Ancestral • Racines & Écorces</span>
-            </div>
-
             {/* Main Headline (Desktop) */}
             <h1 className="hidden lg:block font-serif text-3xl xl:text-4xl 2xl:text-5xl font-bold tracking-tight text-white leading-[1.12] mb-4">
               Vitalité masculine.<br />
@@ -64,7 +54,7 @@ export default function Hero() {
             </p>
 
             {/* CTAs (Price removed, button simply says "Commander" and leads to boutique) */}
-            <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center gap-3 w-full mb-6">
+            <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center gap-3 w-full">
               <button
                 type="button"
                 onClick={scrollToBoutique}
@@ -86,22 +76,6 @@ export default function Hero() {
                 <MessageCircle className="w-4 h-4 text-agbara-bg" />
                 <span>Conseil WhatsApp</span>
               </a>
-            </div>
-
-            {/* Trust Points */}
-            <div className="space-y-2 pt-2 border-t border-agbara-border/40 w-full text-xs font-mono text-agbara-mut">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-agbara-gold shrink-0" />
-                <span>Paiement sécurisé à la livraison</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-agbara-gold shrink-0" />
-                <span>Livraison discrète à Cotonou & tout le Bénin</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-agbara-gold shrink-0" />
-                <span>Mobile Money (MTN / Moov) & Espèces</span>
-              </div>
             </div>
 
           </div>
@@ -139,12 +113,6 @@ export default function Hero() {
                 alt="Feuille botanique AGBARA"
                 className="w-5 sm:w-7 h-auto filter drop-shadow-[0_8px_14px_rgba(0,0,0,0.8)] opacity-90 rotate-12"
               />
-            </div>
-
-            {/* Floating Badge Top-Right */}
-            <div className="absolute top-2 right-1 sm:right-3 z-20 bg-agbara-card/95 backdrop-blur-md border border-agbara-gold/60 px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-mono text-agbara-gold shadow-2xl flex items-center gap-1.5">
-              <Sparkles className="w-3 h-3 text-agbara-gold" />
-              <span>Bouteille 750ml Hermétique</span>
             </div>
 
             {/* The Ultra-HD Straight Centered Bottle (Super HD 648x1800 from original master) */}
@@ -227,11 +195,6 @@ export default function Hero() {
                   </p>
                 </div>
               </div>
-            </div>
-
-            {/* Quick Guarantee */}
-            <div className="w-full p-3.5 rounded-xl bg-[#120905]/80 border border-agbara-border/50 flex items-center justify-center text-center text-xs font-mono text-agbara-gold">
-              <span>Colis neutre & discret • Suivi personnalisé WhatsApp</span>
             </div>
 
           </div>

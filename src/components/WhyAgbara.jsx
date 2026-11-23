@@ -43,7 +43,7 @@ export default function WhyAgbara() {
       </div>
 
       {/* 3 Pillar Cards from Original HTML */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {cards.map((c, i) => {
           const Icon = c.icon;
           return (
@@ -65,17 +65,6 @@ export default function WhyAgbara() {
             </div>
           );
         })}
-      </div>
-
-      {/* Exact Image from Original HTML: alt="AGBARA" */}
-      <div className="flex justify-center">
-        <div className="w-full max-w-[440px] rounded-2xl overflow-hidden border border-agbara-border shadow-2xl bg-black/40">
-          <img
-            src="/images/agbara_tradition.jpeg"
-            alt="AGBARA"
-            className="w-full h-auto object-cover block filter contrast-105"
-          />
-        </div>
       </div>
     </section>
   );
